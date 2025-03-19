@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple</title>
+</head>
+  
+ <style>
+    .container{
+       text-align: center;
+       margin: 5%;
+       background-color: azure;
+       padding: 5%;
+    }
+
+    .main{
+        line-height: 70px; 
+        font-size: larger;
+        text-transform: capitalize;
+    }
+    input{
+        width: 60%;
+        height: 30px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+     
+     .links,a{
+      color:black;
+      display: flex;
+      gap:90%;
+      text-decoration: none;
+     }
+     .links,a:hover{
+        color: aqua;
+     }
+     .box{
+        padding-top:  30px;
+        padding-left: 43%;
+     }
+ </style>
+<body>
+   
+    <div class="container">
+    
+  <div class="links">  
+     <a href="#">Back</a>
+    <a href="#">Next</a>
+
+   </div> 
+
+     <h1 style="font-size: xx-large;">Forgot Apple ID?</h1>
+  
+    
+
+    <p>  Enter the information below to find your <br> Apple Id. </p>
+   
+   <div class="main">
+     <label for="lname">Last name:</label>
+    <input type="text" id="lname" name="lname" placeholder="Required" autofocus><br>
+    <label for="fname">First name:</label>
+    <input type="text" name="fname" id="fname" placeholder="Required" autofocus><br>
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email" value="Required">
+   </div>
+   <div class="box" style="text-align: center;"> 
+  
+  <a href="#">  Do not have an email address? </a>
+ </div>
+   </div>
+    
+</body>
+</html>

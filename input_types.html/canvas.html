@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook-style Notification Graph</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="notificationChart" width="600" height="400"></canvas>
+    <script>
+        // Get the canvas element and its context
+        const canvas = document.getElementById('notificationChart');
+        const ctx = canvas.getContext('2d');
+
+        // User activity data over a week (e.g., number of notifications per day)
+        const userActivity = [20, 30, 25, 40, 35, 50, 45]; // Example data for 7 days
+        const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+        // Set up some variables
+        const barWidth = 50; // Width of each bar
+        const barSpacing = 60; // Space between bars
+        const maxActivity = Math.max(...userActivity); // Maximum activity to scale the bars
+        const chartHeight = canvas.height - 40; // Allow for some margin
+
+        // Function to draw the graph
+        function drawGraph() {
+            // Clear canvas before each draw
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the axis
+            ctx.strokeStyle = '#000';
+            ctx.beginPath();
+            ctx.moveTo(40, chartHeight); // X axis starting point
+            ctx.lineTo(40, 20); // Y axis starting point
+            ctx.lineTo(canvas.width - 20, chartHeight); // X axis end point
+            ctx.stroke();
+
+            // Draw the bars
+            for (let i = 0; i < userActivity.length; i++) {
+                const barHeight = (userActivity[i] / maxActivity) * chartHeight; // Scale bar height
+                const x = 40 + i * barSpacing;
+                const y = chartHeight - barHeight;
+
+                ctx.fillStyle = '#4CAF50'; // Green color for bars
+                ctx.fillRect(x, y, barWidth, barHeight);
+
+                // Add labels for the days of the week
+                ctx.fillStyle = '#000';
+                ctx.font = '14px Arial';
+                ctx.fillText(daysOfWeek[i], x + (barWidth / 2) - 10, chartHeight + 20);
+            }
+
+            // Add labels for the y-axis
+            ctx.fillStyle = '#000';
+            ctx.font = '12px Arial';
+            ctx.fillText('0', 10, chartHeight);
+            ctx.fillText(maxActivity, 10, 20);
+        }
+
+        // Draw the graph
+        drawGraph();
+    </script>
+</body>
+</html>
